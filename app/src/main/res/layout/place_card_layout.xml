@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/place_image"
+        android:layout_width="100dp"
+        android:layout_height="145dp"
+        android:src="@drawable/temple"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Place Name 1"
+        android:layout_toEndOf="@+id/place_image"
+        android:layout_marginLeft="30dp"
+        android:textStyle="bold"
+        android:id="@+id/place_name"
+        android:textSize="24sp"
+        />
+    <TextView
+        android:id="@+id/place_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/place_name"
+        android:layout_toEndOf="@+id/place_image"
+        android:layout_marginLeft="30dp"
+        android:text="Rated 4.5 stars"
+        android:textSize="16sp"
+        android:layout_marginTop="15dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/place_status"
+        android:layout_toEndOf="@+id/place_rating"
+        android:layout_below="@+id/place_name"
+        android:layout_marginTop="15dp"
+        android:text="Open till 8"
+        android:textSize="16sp"
+        android:layout_marginLeft="65dp"
+        />
+    <Button
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/place_image"
+        android:layout_below="@+id/place_rating"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:text="SEE DETAILS"
+        android:id="@+id/place_details_button"
+        android:backgroundTint="@color/primary_orange"
+        android:padding="10dp"
+        />
+
+</RelativeLayout>
