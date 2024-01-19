@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JK">
+
+
+    <ImageView
+        android:layout_width="800dp"
+        android:layout_height="1000dp"
+        android:layout_marginTop="-70dp"
+        android:layout_marginLeft="-80dp"
+        android:background="@drawable/blue_overlay"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/image_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="72dp"
+        android:text="Jammu Kashmir"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="338dp"
+        android:layout_height="488dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="36dp"
+        android:alpha="0.7"
+        android:background="@drawable/gradient_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
+        android:lineHeight="35dp"
+        android:text="This picturesque state is adorned with a diverse landscape that includes snow-capped mountains, pristine lakes, lush valleys, and meandering rivers. Beyond the natural splendor, the rich cultural tapestry of Jammu and Kashmir, with its traditional handicrafts, vibrant festivals, and warm hospitality, completes the experience, leaving an indelible mark on the hearts of those fortunate enough to witness its unparalleled beauty."
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <Button
+        android:id="@+id/back_jk_btn"
+        android:layout_width="127dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#4C4848"
+        android:text="BACK"
+        android:textSize="20sp"
+        app:cornerRadius="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <Button
+        android:id="@+id/explore_jk_btn"
+        android:layout_width="143dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/primary_orange"
+        android:text="EXPLORE"
+        android:textSize="20sp"
+        app:cornerRadius="15dp"
+        app:layout_constraintStart_toEndOf="@+id/back_jk_btn"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

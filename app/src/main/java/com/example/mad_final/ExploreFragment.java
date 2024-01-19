@@ -1,5 +1,6 @@
 package com.example.mad_final;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +60,23 @@ public class ExploreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_explore, container, false);
+        View view = inflater.inflate(R.layout.fragment_explore, container, false);
+
+        // Find the button by ID
+        Button exploreButton = view.findViewById(R.id.explore_page_button);
+
+        // Set an OnClickListener for the button
+        exploreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start the new activity
+                Intent intent = new Intent(getActivity(), JK.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
+
+
     }
 }

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MADFINAL"
         tools:targetApi="31">
         <activity
+            android:name=".JK"
+            android:exported="false" />
+        <activity
             android:name=".PlaceDetailsActivity"
             android:exported="false" />
         <activity
@@ -21,7 +24,6 @@
         <activity
             android:name=".Register"
             android:exported="false" />
-
         <activity
             android:name=".SignUp"
             android:exported="false" />

@@ -1,0 +1,6 @@
+<!-- res/drawable/orange_overlay.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <color android:color="#A9FF9800"/> <!-- Adjust alpha (80) and color (FFA500) as needed -->
+    </item>
+</layer-list>
