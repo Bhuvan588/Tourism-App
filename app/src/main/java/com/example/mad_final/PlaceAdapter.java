@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.mad_final.R;
 
 import java.util.List;
 
@@ -39,8 +40,8 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
         // Bind data to views
         holder.placeImageView.setImageResource(place.getImage());
         holder.placeNameTextView.setText(place.getPlace_name());
-        holder.ratingTextView.setText("Rated " + place.getPlace_rating() + " stars");
-        holder.statusTextView.setText("Open till " + place.getPlace_status());
+        holder.ratingTextView.setText(place.getPlace_rating());
+        holder.statusTextView.setText(place.getPlace_status());
 
         // Handle button click
         holder.detailsButton.setOnClickListener(new View.OnClickListener() {
@@ -77,4 +78,6 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
             detailsButton = itemView.findViewById(R.id.place_details_button);
         }
     }
+
+
 }
