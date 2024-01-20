@@ -27,13 +27,13 @@
         android:layout_width="376dp"
         android:layout_height="52dp"
 
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif"
         android:lineHeight="24dp"
         android:text="Welcome to our app. Please make an account to enjoy maximum benefits!!"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
@@ -41,11 +41,11 @@
         android:layout_width="58dp"
         android:layout_height="26dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="39dp"
         android:text="Email*"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -77,11 +77,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="31dp"
         android:text="Password*"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/email_layout" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -125,12 +125,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="90dp"
+        android:layout_marginStart="90dp"
 
+        android:layout_marginTop="40dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up"
-        tools:layout_editor_absoluteX="1dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up">
 
 
         <TextView
@@ -144,12 +144,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:text="Sign In"
             android:textColor="@color/primary_orange"
             android:textSize="16sp"
-            android:text="Sign In"
             android:textStyle="bold" />
 
     </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

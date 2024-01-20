@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MADFINAL"
         tools:targetApi="31">
         <activity
+            android:name=".JK_Explore"
+            android:exported="false" />
+        <activity
             android:name=".JK"
             android:exported="false" />
         <activity

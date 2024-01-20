@@ -1,12 +1,12 @@
 package com.example.mad_final;
 
 public class Place {
-    String place_name;
-    String place_rating;
-    String place_status;
+    private String place_name;
+    private String place_rating;
+    private String place_status;
 
-    String place_description;
-    int place_image;
+    private String place_description;
+    private int place_image;
 
     public Place(String place_name, String place_rating, String place_status, int image, String place_description) {
         this.place_name = place_name;

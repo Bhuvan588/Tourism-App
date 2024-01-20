@@ -23,5 +23,15 @@ public class JK extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        Button exploreBtn = findViewById(R.id.explore_jk_btn);
+
+        exploreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), JK_Explore.class);
+                startActivity(intent);
+            }
+        });
     }
 }

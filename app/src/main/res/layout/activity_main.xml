@@ -18,25 +18,25 @@
         android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="460dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="16dp"
         android:text="Swara Safar"
         android:textColor="@color/primary_orange"
         android:textSize="48sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="420dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="32dp"
         android:text="Welcome to"
         android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/your_true_c"
@@ -44,7 +44,7 @@
         android:layout_height="112dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="568dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="72dp"
         android:gravity="center_horizontal|top"
         android:lineSpacingExtra="7sp"
@@ -52,7 +52,7 @@
         android:textSize="20sp"
         android:translationY="-3.5sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/swara_safar" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -69,13 +69,12 @@
         android:id="@+id/explore"
         android:layout_width="187dp"
         android:layout_height="71dp"
-        android:layout_marginEnd="112dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/primary_orange"
+
         android:text="LET'S EXPLORE"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/your_true_c" />
 </androidx.constraintlayout.widget.ConstraintLayout>
