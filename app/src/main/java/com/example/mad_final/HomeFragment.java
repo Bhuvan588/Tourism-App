@@ -1,6 +1,5 @@
 package com.example.mad_final;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,15 +16,10 @@ public class HomeFragment extends Fragment {
 
     RecyclerView recyclerView;
     PlaceAdapter placeAdapter;
-    List<Place> placeList ;
+    List<Place> placeList;
 
     public HomeFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -33,38 +27,24 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Initialize RecyclerView
-        initRecyclerView(view);
-
-        // Populate placeList
+        // Initialize placeList and RecyclerView
+        placeList = new ArrayList<>();
         initPlaceList();
+
+        recyclerView = view.findViewById(R.id.home_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // Initialize adapter and set it to RecyclerView
+        placeAdapter = new PlaceAdapter(getContext(), placeList);
+        recyclerView.setAdapter(placeAdapter);
 
         return view;
     }
 
-    private void initRecyclerView(View view) {
-        recyclerView = view.findViewById(R.id.home_recyclerView);
-
-
-        // Initialize adapter and set it to RecyclerView
-        placeAdapter = new PlaceAdapter(getContext(), placeList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(placeAdapter);
-    }
-
-
     private void initPlaceList() {
-        placeList = new ArrayList<>();
-        placeList.add(new Place("Place 1", "4.5", "8 PM", R.drawable.temple, "Description for Place 1"));
-        placeList.add(new Place("Place 2", "4.2", "9 PM", R.drawable.temple, "Description for Place 2"));
-        placeList.add(new Place("Place 3", "4.7", "7 PM", R.drawable.temple, "Description for Place 3"));
-        placeList.add(new Place("Place 4", "4.0", "10 PM", R.drawable.temple, "Description for Place 4"));
-
-        // Notify the adapter that the data set has changed
-
-        placeAdapter.notifyDataSetChanged();
-
-
-
+        placeList.add(new Place("Place 1", "Rated 4.5", "Opens at 8 PM", R.mipmap.image_1, "Description for Place 1"));
+        placeList.add(new Place("Place 2", "Rated 4.2", "Opens at 9 PM", R.mipmap.image_2, "Description for Place 2"));
+        placeList.add(new Place("Place 3", "Rated 4.7", "Opens at 7 PM", R.mipmap.image_3, "Description for Place 3"));
+        placeList.add(new Place("Place 4", "Rated 4.0", "Opens at 10 PM", R.mipmap.image_4, "Description for Place 4"));
     }
 }

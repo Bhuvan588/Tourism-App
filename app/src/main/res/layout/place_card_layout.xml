@@ -7,55 +7,57 @@
 
     <ImageView
         android:id="@+id/place_image"
-        android:layout_width="100dp"
-        android:layout_height="145dp"
-        android:src="@drawable/temple"
-        android:scaleType="centerCrop"/>
+        android:layout_width="83dp"
+        android:layout_height="127dp"
+        android:layout_marginTop="-10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/temple" />
 
     <TextView
+        android:id="@+id/place_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Place Name 1"
-        android:layout_toEndOf="@+id/place_image"
         android:layout_marginLeft="30dp"
-        android:textStyle="bold"
-        android:id="@+id/place_name"
-        android:textSize="24sp"
-        />
+        android:layout_toEndOf="@+id/place_image"
+        android:text="Place Name 1"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/place_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/place_name"
-        android:layout_toEndOf="@+id/place_image"
         android:layout_marginLeft="30dp"
-        android:text="Rated 4.5 stars"
-        android:textSize="16sp"
         android:layout_marginTop="15dp"
-        />
+        android:layout_toEndOf="@+id/place_image"
+        android:text="Rated 4.5 stars"
+        android:textSize="14sp" />
 
     <TextView
+        android:id="@+id/place_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/place_status"
-        android:layout_toEndOf="@+id/place_rating"
         android:layout_below="@+id/place_name"
-        android:layout_marginTop="15dp"
-        android:text="Open till 8"
-        android:textSize="16sp"
+        android:layout_marginStart="56dp"
         android:layout_marginLeft="65dp"
-        />
-    <Button
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/place_image"
-        android:layout_below="@+id/place_rating"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="25dp"
-        android:text="SEE DETAILS"
+        android:layout_toEndOf="@+id/place_rating"
+        android:text="Open till 8"
+        android:textSize="14sp" />
+
+    <Button
         android:id="@+id/place_details_button"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/place_rating"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@id/place_image"
         android:backgroundTint="@color/primary_orange"
         android:padding="10dp"
-        />
+        android:text="SEE DETAILS"
+        android:textSize="12sp" />
 
 </RelativeLayout>
