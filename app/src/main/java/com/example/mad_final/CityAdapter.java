@@ -2,6 +2,7 @@ package com.example.mad_final;
 
 // CityAdapter.java
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,9 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
         holder.cityDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle button click if needed
+                Intent intent = new Intent(context, CityDetailsActivity.class);
+                intent.putExtra("cityName", city.getCityName());
+                context.startActivity(intent);
             }
         });
     }
