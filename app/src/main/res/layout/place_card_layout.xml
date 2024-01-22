@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_height="140dp">
 
 
     <ImageView
         android:id="@+id/place_image"
-        android:layout_width="83dp"
-        android:layout_height="127dp"
-        android:layout_marginTop="-10dp"
+        android:layout_width="103dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="-5dp"
         android:scaleType="centerCrop"
         android:src="@drawable/temple" />
 
@@ -21,6 +21,7 @@
         android:layout_toEndOf="@+id/place_image"
         android:text="Place Name 1"
         android:textSize="20sp"
+        android:textColor="@color/primary_orange"
         android:textStyle="bold" />
 
     <TextView

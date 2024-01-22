@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#236E27"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".SavedFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:textColor="@color/white"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="300dp"
-        android:text="YEH HAI SAVED" />
+        android:text="Your Bucket List"
+        android:textStyle="bold"
+        android:textColor="#3A3838"
+        android:textSize="32sp" />
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/saved_items_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="56dp">
+
+        <!-- Saved items will be added dynamically here -->
+
+    </LinearLayout>
+
+</LinearLayout>
