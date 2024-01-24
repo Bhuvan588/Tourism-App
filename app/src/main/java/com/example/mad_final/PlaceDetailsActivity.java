@@ -72,6 +72,7 @@ public class PlaceDetailsActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void updateBookmarkIcon() {

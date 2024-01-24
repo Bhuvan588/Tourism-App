@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     tools:context=".SettingsFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,9 +10,77 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:textColor="@color/white"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="300dp"
-        android:text="Aur yaha settings ke sath humari pawri ho rahi hia" />
+        android:textColor="@color/primary_orange"
+        android:textStyle="bold"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="50dp"
+        android:text="Settings" />
 
+   <ImageView
+       android:layout_width="40dp"
+       android:layout_height="40dp"
+       android:src="@drawable/logout"
+       android:layout_marginTop="150dp"
+       android:layout_marginLeft="40dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LogOut"
+        android:layout_marginTop="153dp"
+        android:layout_marginLeft="100dp"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:id="@+id/logout"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/about"
+        android:layout_marginTop="230dp"
+        android:layout_marginLeft="35dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About Us"
+        android:layout_marginTop="235dp"
+        android:layout_marginLeft="100dp"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:id="@+id/about"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spread a word about our app!!"
+        android:textSize="20sp"
+        android:layout_marginTop="320dp"
+        android:layout_marginLeft="40dp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_orange"/>
+
+
+    <TextView
+        android:id="@+id/quote"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="370dp"
+        android:lineHeight="30dp"
+        android:text="Zindagi aise hi jhand hai, Par Kotlin sikhte hue , Java se app banane ka ghamand hai"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="490dp"
+        android:layout_marginLeft="50dp"
+        android:text="SHARE THIS QUOTE"
+        android:id="@+id/share_quote"
+        android:backgroundTint="@color/primary_orange"
+        />
 </FrameLayout>

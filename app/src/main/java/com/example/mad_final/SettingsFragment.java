@@ -1,5 +1,6 @@
 package com.example.mad_final;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,12 +58,52 @@ public class SettingsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        View view = inflater.inflate(R.layout.fragment_settings, container, false);
+
+        TextView logout = view.findViewById(R.id.logout);
+
+        TextView about = view.findViewById(R.id.about);
+
+        Button share = view.findViewById(R.id.share_quote);
+
+        TextView quote = view.findViewById(R.id.quote);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Register.class);
+                startActivity(intent);
+            }
+        });
+
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), About.class);
+                startActivity(intent);
+            }
+        });
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = quote.getText().toString();
+                Intent sendintent = new Intent();
+                sendintent.setAction(Intent.ACTION_SEND);
+                sendintent.setType("text/plain");
+                sendintent.putExtra(Intent.EXTRA_TEXT, text);
+                startActivity(sendintent);
+            }
+        });
+
+        return view;
     }
 }
