@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -64,7 +65,7 @@ public class PlaceDetailsActivity extends AppCompatActivity {
          descriptionTextView = findViewById(R.id.place_details_description);
 
         nameTextView.setText(placeName);
-        descriptionTextView.setText(placeDescription);
+        //descriptionTextView.setText(placeDescription);
 
         // Set up bookmark icon
         bookmarkIcon = findViewById(R.id.bookmark_icon);
@@ -87,9 +88,9 @@ public class PlaceDetailsActivity extends AppCompatActivity {
             }
         });
 
-//        String url = "http://localhost:4000/api/v1/place";
-//
-//        fetchPlaceDetails(url);
+        String url = "http://192.168.1.199:4000/api/v1/placeInfos";
+
+        fetchPlaceDetails(url);
 
 
     }
@@ -128,44 +129,47 @@ public class PlaceDetailsActivity extends AppCompatActivity {
                 });
     }
 
-//    private void fetchPlaceDetails(String apiUrl) {
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-//                Request.Method.GET,
-//                apiUrl,
-//                null,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            JSONArray placeInfoArray = response.getJSONArray("place_info");
-//
-//                            // Assuming the first entry in the array contains the description
-//                            if (placeInfoArray.length() > 0) {
-//                                JSONObject placeInfo = placeInfoArray.getJSONObject(0);
-//                                JSONObject placeInfoDetails = placeInfo.getJSONObject("place_info");
-//                                String placeDescription = placeInfoDetails.getString("place_info_description");
-//
-//                                // Set the place description to TextView
-//                                Log.d("PLACE_DESCRIPTION", placeDescription);
-//                                descriptionTextView.setText(placeDescription);
-//                            }
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        error.printStackTrace();
-//                        // Handle error here
-//                    }
-//                });
-//
-//        requestQueue.add(jsonObjectRequest);
-//    }
+    private void fetchPlaceDetails(String apiUrl) {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.GET,
+                apiUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            Log.d("API_RESPONSE", response);
+
+                            // Convert the response to a JSONArray
+                            JSONArray jsonArray = new JSONArray(response);
+
+                            // Assuming the first entry in the array contains the description
+                            if (jsonArray.length() > 0) {
+                                JSONObject placeInfo = jsonArray.getJSONObject(0);
+                                String placeDescription = placeInfo.getString("place_info_description");
+
+                                // Set the result to TextView
+                                descriptionTextView.setText(placeDescription);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        Log.e("API_ERROR", "Error during API request: " + error.getMessage());
+                        // Handle error here
+                    }
+                });
+
+        requestQueue.add(stringRequest);
+    }
+
+
 
 
 }
