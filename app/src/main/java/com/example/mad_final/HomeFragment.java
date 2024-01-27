@@ -12,11 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
+
+
 public class HomeFragment extends Fragment {
 
     RecyclerView recyclerView;
     PlaceAdapter placeAdapter;
     List<Place> placeList;
+
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -37,6 +44,8 @@ public class HomeFragment extends Fragment {
         // Initialize adapter and set it to RecyclerView
         placeAdapter = new PlaceAdapter(getContext(), placeList);
         recyclerView.setAdapter(placeAdapter);
+
+
 
         return view;
     }

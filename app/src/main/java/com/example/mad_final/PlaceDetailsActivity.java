@@ -18,11 +18,23 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 public class PlaceDetailsActivity extends AppCompatActivity {
 
@@ -31,6 +43,8 @@ public class PlaceDetailsActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+
+    TextView descriptionTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +61,7 @@ public class PlaceDetailsActivity extends AppCompatActivity {
 
         // Set the place name and description to TextViews
         TextView nameTextView = findViewById(R.id.place_details_name);
-        TextView descriptionTextView = findViewById(R.id.place_details_description);
+         descriptionTextView = findViewById(R.id.place_details_description);
 
         nameTextView.setText(placeName);
         descriptionTextView.setText(placeDescription);
@@ -72,6 +86,11 @@ public class PlaceDetailsActivity extends AppCompatActivity {
                 }
             }
         });
+
+//        String url = "http://localhost:4000/api/v1/place";
+//
+//        fetchPlaceDetails(url);
+
 
     }
 
@@ -108,4 +127,45 @@ public class PlaceDetailsActivity extends AppCompatActivity {
                     }
                 });
     }
+
+//    private void fetchPlaceDetails(String apiUrl) {
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+//                Request.Method.GET,
+//                apiUrl,
+//                null,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        try {
+//                            JSONArray placeInfoArray = response.getJSONArray("place_info");
+//
+//                            // Assuming the first entry in the array contains the description
+//                            if (placeInfoArray.length() > 0) {
+//                                JSONObject placeInfo = placeInfoArray.getJSONObject(0);
+//                                JSONObject placeInfoDetails = placeInfo.getJSONObject("place_info");
+//                                String placeDescription = placeInfoDetails.getString("place_info_description");
+//
+//                                // Set the place description to TextView
+//                                Log.d("PLACE_DESCRIPTION", placeDescription);
+//                                descriptionTextView.setText(placeDescription);
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        error.printStackTrace();
+//                        // Handle error here
+//                    }
+//                });
+//
+//        requestQueue.add(jsonObjectRequest);
+//    }
+
+
 }

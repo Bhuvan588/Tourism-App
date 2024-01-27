@@ -18,7 +18,13 @@ android {
 
     }
 
+    buildFeatures{
+        viewBinding{
+            enable = true
 
+        }
+        buildConfig = true
+    }
 
     buildTypes {
         release {
@@ -28,14 +34,12 @@ android {
                 "proguard-rules.pro"
             )
         }
+
+
     }
 
-    buildFeatures{
-        viewBinding{
-            enable = true
 
-        }
-    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -58,6 +62,13 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.google.guava:guava:33.0.0-android")
     implementation ("com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava")
+    implementation ("com.android.volley:volley:1.2.1")
+
+
+
+
+
+
 
 
 }
