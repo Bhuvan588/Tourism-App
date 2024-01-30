@@ -9,13 +9,37 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <!-- Add this to your fragment_home.xml layout file -->
+
+    <TextView
+        android:id="@+id/currentLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="125dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+    <fragment
+        android:id="@+id/autocomplete_fragment"
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="200dp"
+        android:elevation="4dp"
+        android:theme="@style/search_bar_style"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/currentLocation" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="420dp"
         android:orientation="vertical">
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -24,28 +48,35 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="320dp"
+        android:text="Welcome User"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:text="Welcome User" />
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="370dp"
         android:text="Recommended near you"
-        android:layout_marginTop="250dp"
-        android:textSize="16sp"
-        android:layout_marginLeft="20dp"
-        />
+        android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/locationTextView"
+        android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="60dp"
-        android:text="TextView" />
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="90dp"
+        android:text="Current Location" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="26dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/location_pin" />
 
 
 </FrameLayout>

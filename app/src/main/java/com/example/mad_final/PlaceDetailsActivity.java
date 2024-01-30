@@ -1,6 +1,7 @@
 package  com.example.mad_final;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,8 +14,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.libraries.places.api.model.AutocompletePrediction;
+import com.google.android.libraries.places.api.model.Period;
+import com.google.android.libraries.places.api.model.TimeOfWeek;
+import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest;
+import com.google.android.libraries.places.api.net.FindAutocompletePredictionsResponse;
+import com.google.android.libraries.places.api.net.IsOpenRequest;
+import com.google.android.libraries.places.api.net.IsOpenResponse;
+import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,8 +33,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.android.volley.Request;
@@ -35,6 +49,21 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.OpeningHours;
+import com.google.android.libraries.places.api.model.PhotoMetadata;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.Review;
+import com.google.android.libraries.places.api.net.FetchPhotoRequest;
+import com.google.android.libraries.places.api.net.FetchPhotoResponse;
+import com.google.android.libraries.places.api.net.FetchPlaceRequest;
+import com.google.android.libraries.places.api.net.FetchPlaceResponse;
+import com.google.rpc.Status;
 
 
 public class PlaceDetailsActivity extends AppCompatActivity {
@@ -47,6 +76,17 @@ public class PlaceDetailsActivity extends AppCompatActivity {
 
     TextView descriptionTextView;
 
+    private TextView place_rating;
+
+    private TextView place_timing;
+
+    private PlacesClient placesClient;
+
+    private String placeId;
+
+    @NonNull
+    Calendar isOpenCalendar = Calendar.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,17 +95,25 @@ public class PlaceDetailsActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
+
+        Places.initialize(getApplicationContext(), "AIzaSyAyVZeKgYaQQj05bv56YPPGN1KUv992X9c");
+
+        placesClient = Places.createClient(this);
+
         // Retrieve data from the intent
         Intent intent = getIntent();
         String placeName = intent.getStringExtra("placeName");
         String placeDescription = intent.getStringExtra("placeDescription");
+
+        place_rating = findViewById(R.id.place_detail_rating);
+        place_timing = findViewById(R.id.place_details_timing);
 
         // Set the place name and description to TextViews
         TextView nameTextView = findViewById(R.id.place_details_name);
          descriptionTextView = findViewById(R.id.place_details_description);
 
         nameTextView.setText(placeName);
-        //descriptionTextView.setText(placeDescription);
+        descriptionTextView.setText(placeDescription);
 
         // Set up bookmark icon
         bookmarkIcon = findViewById(R.id.bookmark_icon);
@@ -87,12 +135,43 @@ public class PlaceDetailsActivity extends AppCompatActivity {
                 }
             }
         });
-
-        String url = "http://192.168.1.199:4000/api/v1/placeInfos";
-
-        fetchPlaceDetails(url);
+        getPlaceIdByName(placeName);
 
 
+    }
+
+    private void getPlaceIdByName(String placeName) {
+        // Set up the request
+        FindAutocompletePredictionsRequest request = FindAutocompletePredictionsRequest.builder()
+                .setQuery(placeName)
+                .build();
+
+        // Fetch predictions
+        placesClient.findAutocompletePredictions(request).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                FindAutocompletePredictionsResponse predictions = task.getResult();
+                if (predictions != null) {
+                    for (AutocompletePrediction prediction : predictions.getAutocompletePredictions()) {
+                        // Extract the place ID from the prediction
+                        placeId = prediction.getPlaceId();
+
+                        // Now you have the place ID
+                        // Use it as needed (e.g., call fetchPlaceDetails(placeId))
+                        fetchPlaceDetails(placeId);
+
+                        // Break out of the loop since we only need one prediction
+                        break;
+                    }
+                }
+            } else {
+                Exception exception = task.getException();
+                if (exception != null) {
+                    // Handle the error using the exception
+                    int status = ((ApiException) exception).getStatusCode();
+                    // Handle the status code as needed
+                }
+            }
+        });
     }
 
     private void updateBookmarkIcon() {
@@ -129,45 +208,91 @@ public class PlaceDetailsActivity extends AppCompatActivity {
                 });
     }
 
-    private void fetchPlaceDetails(String apiUrl) {
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+    private void fetchPlaceDetails(String placeId) {
+        List<Place.Field> placeFields = Arrays.asList(
+                Place.Field.ID,
+                Place.Field.NAME,
+                Place.Field.RATING,
+                Place.Field.USER_RATINGS_TOTAL,
+                Place.Field.OPENING_HOURS,
+                Place.Field.PHOTO_METADATAS,
+                Place.Field.REVIEWS
+        );
 
-        StringRequest stringRequest = new StringRequest(
-                Request.Method.GET,
-                apiUrl,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            Log.d("API_RESPONSE", response);
+        FetchPlaceRequest request = FetchPlaceRequest.builder(placeId, placeFields).build();
 
-                            // Convert the response to a JSONArray
-                            JSONArray jsonArray = new JSONArray(response);
+        Places.createClient(this).fetchPlace(request).addOnSuccessListener((response) -> {
+            Place place = response.getPlace();
 
-                            // Assuming the first entry in the array contains the description
-                            if (jsonArray.length() > 0) {
-                                JSONObject placeInfo = jsonArray.getJSONObject(0);
-                                String placeDescription = placeInfo.getString("place_info_description");
+            // Access additional details
+            double rating = place.getRating();
+            place_rating.setText(Double.toString(rating));
 
-                                // Set the result to TextView
-                                descriptionTextView.setText(placeDescription);
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+            int userRatingsTotal = place.getUserRatingsTotal();
+            OpeningHours openingHours = place.getOpeningHours();
+
+            if (openingHours != null) {
+                // Get the periods during which the place is open
+                List<Period> periods = openingHours.getPeriods();
+
+                if (periods != null) {
+                    for (Period period : periods) {
+                        int openHour = period.getOpen().getTime().getHours();  // Use getTime() to get hours
+                        int openMinute = period.getOpen().getTime().getMinutes();
+                        int closeHour = period.getClose().getTime().getHours();  // Use getTime() for close hours
+                        int closeMinute = period.getClose().getTime().getMinutes();
+
+                        // Build and display the opening hour string
+                        String openingHoursString = "Open from " + openHour + ":" + openMinute + " to " + closeHour + ":" + closeMinute;
+                        place_timing.setText(openingHoursString);
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                        Log.e("API_ERROR", "Error during API request: " + error.getMessage());
-                        // Handle error here
-                    }
-                });
+                } else {
+                    // Opening hours information is not available
+                }
+            } else {
+                // Opening hours information is not available
+            }
 
-        requestQueue.add(stringRequest);
+
+            List<Review> reviews = place.getReviews();
+            List<PhotoMetadata> photoMetadatas = place.getPhotoMetadatas();
+
+            // Handle or store these details as needed
+
+            // For simplicity, let's fetch the first photo if available
+            if (photoMetadatas != null && !photoMetadatas.isEmpty()) {
+                PhotoMetadata photoMetadata = photoMetadatas.get(0);
+                fetchAndDisplayPhoto(photoMetadata);
+            }
+
+        }).addOnFailureListener((exception) -> {
+            // Handle failure
+            Log.e("PlaceDetails", "Fetch place details request failed: " + exception.getMessage());
+        });
     }
+
+    private void fetchAndDisplayPhoto(PhotoMetadata photoMetadata) {
+        FetchPhotoRequest photoRequest = FetchPhotoRequest.builder(photoMetadata)
+                .setMaxHeight(200) // Set your desired photo height
+                .setMaxWidth(200)  // Set your desired photo width
+                .build();
+
+        Places.createClient(this).fetchPhoto(photoRequest).addOnSuccessListener((response) -> {
+            Bitmap bitmap = response.getBitmap();
+            // Display the bitmap as needed
+        }).addOnFailureListener((exception) -> {
+            // Handle failure
+            Log.e("PlaceDetails", "Fetch photo request failed: " + exception.getMessage());
+        });
+    }
+
+
+
+
+
+
+
+
 
 
 

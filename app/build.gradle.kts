@@ -1,11 +1,13 @@
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
+    id ("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
     namespace = "com.example.mad_final"
     compileSdk = 34
+
 
     defaultConfig {
         applicationId = "com.example.mad_final"
@@ -33,10 +35,14 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
         }
 
 
+
     }
+
+
 
 
 
@@ -63,6 +69,17 @@ dependencies {
     implementation("com.google.guava:guava:33.0.0-android")
     implementation ("com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava")
     implementation ("com.android.volley:volley:1.2.1")
+
+
+    implementation ("com.google.android.libraries.places:places:3.3.0")
+
+
+
+
+
+
+
+
 
 
 

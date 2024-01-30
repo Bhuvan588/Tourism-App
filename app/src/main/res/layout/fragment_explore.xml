@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
 
     tools:context=".ExploreFragment">
 
@@ -30,7 +31,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
+        android:layout_marginLeft="130dp"
         android:layout_marginTop="60dp"
         android:gravity="center"
         android:text="Explore"
@@ -42,6 +43,7 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="-5dp"
         android:layout_marginTop="150dp"
         android:lineHeight="30dp"
         android:text="Dwelve into the beauty of each state  and explore the unique cultures "

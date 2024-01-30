@@ -20,8 +20,8 @@
         android:layout_marginLeft="30dp"
         android:layout_toEndOf="@+id/place_image"
         android:text="Place Name 1"
-        android:textSize="20sp"
         android:textColor="@color/primary_orange"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
