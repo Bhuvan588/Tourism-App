@@ -68,7 +68,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="370dp"
         android:lineHeight="30dp"
-        android:text="Share our app to your friends and relatives!!"
+        android:text="Share our app in your network!!"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
