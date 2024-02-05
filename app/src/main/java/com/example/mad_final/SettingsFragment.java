@@ -98,7 +98,7 @@ public class SettingsFragment extends Fragment {
                 String text = quote.getText().toString();
                 Intent sendintent = new Intent();
                 sendintent.setAction(Intent.ACTION_SEND);
-                sendintent.setType("text/plain");
+                sendintent.setType ("text/plain");
                 sendintent.putExtra(Intent.EXTRA_TEXT, text);
                 startActivity(sendintent);
             }

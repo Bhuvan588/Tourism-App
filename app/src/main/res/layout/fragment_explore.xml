@@ -56,10 +56,10 @@
         android:id="@+id/explore_page_button"
         android:layout_width="350dp"
         android:layout_height="70dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="330dp"
-
-        android:text="Jammu and Kashmir"
+        android:backgroundTint="#8F4D0B"
+        android:text="JAMMU AND KASHMIR"
         android:textSize="18sp"
         app:cornerRadius="15dp" />
 
