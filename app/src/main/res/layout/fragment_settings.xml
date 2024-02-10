@@ -16,71 +16,82 @@
         android:layout_marginTop="50dp"
         android:text="Settings" />
 
-   <ImageView
-       android:layout_width="40dp"
-       android:layout_height="40dp"
-       android:src="@drawable/logout"
-       android:layout_marginTop="150dp"
-       android:layout_marginLeft="40dp"/>
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="41dp"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/logout" />
 
     <TextView
+        android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LogOut"
-        android:layout_marginTop="153dp"
         android:layout_marginLeft="100dp"
+        android:layout_marginTop="153dp"
+        android:text="LogOut"
+        android:textColor="#CE000000"
         android:textSize="24sp"
-        android:textColor="@color/black"
-        android:id="@+id/logout"/>
+        android:textStyle="bold" />
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/about"
-        android:layout_marginTop="230dp"
-        android:layout_marginLeft="35dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="About Us"
-        android:layout_marginTop="235dp"
-        android:layout_marginLeft="100dp"
-        android:textSize="24sp"
-        android:textColor="@color/black"
-        android:id="@+id/about"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Spread a word about our app!!"
-        android:textSize="20sp"
-        android:layout_marginTop="320dp"
+        android:layout_width="38dp"
+        android:layout_height="46dp"
         android:layout_marginLeft="40dp"
-        android:textStyle="bold"
-        android:textColor="@color/primary_orange"/>
+        android:layout_marginTop="230dp"
+        android:src="@drawable/about" />
 
+    <TextView
+        android:id="@+id/about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="235dp"
+        android:text="About Us"
+        android:textColor="#CF000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="470dp"
+        android:text="Spread a word about our app!!"
+        android:textColor="@color/primary_orange"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="470dp"
+        android:layout_marginLeft="340dp"
+        android:src="@drawable/happy"/>
 
     <TextView
         android:id="@+id/quote"
-        android:layout_width="310dp"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="520dp"
         android:lineHeight="30dp"
-        android:text="Share our app in your network!!"
+        android:text="Share our app in your network!! This app was made as part of our MAD project!!"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <Button
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginTop="490dp"
-        android:layout_marginLeft="50dp"
-        android:text="SHARE THIS QUOTE"
         android:id="@+id/share_quote"
+        android:layout_width="293dp"
+        android:layout_height="71dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="600dp"
         android:backgroundTint="@color/primary_orange"
-        />
+        android:text="SHARE THIS QUOTE"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
 </FrameLayout>

@@ -60,6 +60,8 @@ public class HomeFragment extends Fragment {
 
 
 
+
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -86,7 +88,7 @@ public class HomeFragment extends Fragment {
         // Initialize FusedLocationProviderClient
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
 
-        Places.initialize(getContext(), "AIzaSyAyVZeKgYaQQj05bv56YPPGN1KUv992X9c");
+        Places.initialize(getContext(), "YOUR API KEY. MERA KYU CHAHIYE? :)");
 
 
 

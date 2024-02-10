@@ -1,5 +1,6 @@
 package com.example.mad_final;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -28,6 +30,7 @@ public class SettingsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -75,6 +78,8 @@ public class SettingsFragment extends Fragment {
         Button share = view.findViewById(R.id.share_quote);
 
         TextView quote = view.findViewById(R.id.quote);
+
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

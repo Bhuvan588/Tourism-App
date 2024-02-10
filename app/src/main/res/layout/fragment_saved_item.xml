@@ -6,25 +6,23 @@
     android:padding="16dp">
 
 
-
-
         <TextView
             android:id="@+id/saved_item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="18sp"
             android:text="City Name"
-            android:textColor="#3A3838"/>
+            android:textColor="#3A3838"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/saved_item_datetime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Saved_Date"
             android:layout_marginTop="6dp"
+            android:text="Saved_Date"
             android:textColor="#8E8C8C"
-            android:textSize="14sp" />
+            android:textSize="13sp" />
 
         <ImageView
             android:layout_width="370dp"
