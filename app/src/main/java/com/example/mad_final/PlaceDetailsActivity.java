@@ -96,7 +96,7 @@ public class PlaceDetailsActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
 
-        Places.initialize(getApplicationContext(), "YOUR API KEY . MERA KYU CHAHIYE? :)");
+        Places.initialize(getApplicationContext(), "YOUR API KEY");
 
         placesClient = Places.createClient(this);
 

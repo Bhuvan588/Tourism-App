@@ -88,7 +88,7 @@ public class HomeFragment extends Fragment {
         // Initialize FusedLocationProviderClient
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
 
-        Places.initialize(getContext(), "YOUR API KEY. MERA KYU CHAHIYE? :)");
+        Places.initialize(getContext(), "YOUR API KEY");
 
 
 
