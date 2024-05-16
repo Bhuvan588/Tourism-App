@@ -13,11 +13,6 @@ This is our tourism app 'Swara Safar' which is a part of our Mobile App Developm
 
 
 
-![splash](https://github.com/Bhuvan588/Tourism-App/assets/68458621/89abdf0e-c33e-4d7c-b529-58ab542612e2)
-![login](https://github.com/Bhuvan588/Tourism-App/assets/68458621/6c6ecfe3-3789-4bea-9589-7a5c9739968f)
-![home (2)](https://github.com/Bhuvan588/Tourism-App/assets/68458621/866db65a-41fc-468f-a22a-51791febd924)
-![state_info](https://github.com/Bhuvan588/Tourism-App/assets/68458621/da67f151-2dc1-4df5-972a-915ecd881e11)
-![bucket_list](https://github.com/Bhuvan588/Tourism-App/assets/68458621/27ff85f7-f8d1-49c6-8d46-58be565c7134)
 
 ## Youtube Walkthrough
 
